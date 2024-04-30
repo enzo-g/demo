@@ -1,0 +1,12 @@
+---
+- name: Ping google.com to check connectivity
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Ping google.com
+      command: ping -c 4 google.com
+      register: ping_output
+
+    - name: Print ping results
+      debug:
+        msg: "{{ ping_output.stdout_lines }}"
